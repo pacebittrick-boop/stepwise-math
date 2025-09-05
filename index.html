@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stepwise Math</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b5fff">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <style>
+    /* Minimal inline critical CSS for fast paint; rest in style.css */
+    :root { --brand:#0b5fff; --bg:#0b0c10; --card:#121318; --muted:#98a2b3; --text:#f5f7fb; }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;}
+    header{position:sticky;top:0;background:linear-gradient(180deg,#0b5fff 0%,#094bd6 100%);padding:16px 20px;display:flex;align-items:center;gap:12px;z-index:5}
+    header img{width:34px;height:34px}
+    header h1{font-size:20px;margin:0;letter-spacing:.3px}
+    main{padding:16px}
+    .card{background:var(--card);border:1px solid #1f2430;border-radius:14px;padding:16px;margin-bottom:14px}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .tab{padding:10px 12px;border-radius:999px;background:#181c25;border:1px solid #252a36;cursor:pointer;font-size:13px}
+    .tab.active{background:var(--brand);border-color:#2a5eff}
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+    input, select{width:100%;padding:12px;border-radius:10px;border:1px solid #303a4d;background:#0f1420;color:var(--text);margin-bottom:10px}
+    button{padding:12px 14px;border-radius:12px;border:0;background:var(--brand);color:white;font-weight:600;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid #2a3347}
+    .steps{list-style:none;padding-left:0;margin:0}
+    .steps li{padding:10px 12px;border:1px solid #20293b;background:#0e1320;border-radius:10px;margin-bottom:8px}
+    .muted{color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width: 520px){ .grid{grid-template-columns:1fr} }
+    a{color:#8cb5ff;text-decoration:none}
+    footer{padding:30px 16px;color:var(--muted);text-align:center}
+    .tiny{font-size:11px}
+    .pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#0f1a32;border:1px solid #1f2c4d;font-size:11px;margin-right:6px}
+    .hidden{display:none}
+    .notice{background:#0f1a32;border:1px solid #1f2c4d;color:#dbe7ff;border-radius:12px;padding:12px 14px;margin-bottom:12px}
+    .video-links a{display:block;margin:6px 0}
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // PWA install
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="assets/icon-192.png" alt="Logo">
+    <h1>Stepwise Math</h1>
+  </header>
+  <main>
+    <section class="card notice">
+      <div><span class="pill">Tip</span> Add this to your Home Screen for an app-like experience (Share ▸ Add to Home Screen on iPhone).</div>
+    </section>
+
+    <section class="card">
+      <div class="tabs" id="tabs"></div>
+      <div id="panel"></div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0">Helpful Videos</h3>
+      <p class="muted">Curated tutorials for each topic.</p>
+      <div class="video-links" id="video-links"></div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0">About</h3>
+      <p>Stepwise Math shows clear, human-readable steps for common problem types and links to quality learning videos. Works offline after first load.</p>
+      <p class="tiny muted">Educational aid only. Double-check results for class or exams.</p>
+    </section>
+  </main>
+  <footer>&copy; 2025 Stepwise Math</footer>
+  <script src="app.js"></script>
+</body>
+</html>
